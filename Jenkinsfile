@@ -18,7 +18,7 @@ echo "PATH=$PATH"
 }
 stage{
 steps('checkout code from the git'){
-git branch: '*/ho', changelog: false, credentialsId: 'git', poll: false, url: 'https://github.com/narendrakumar998931/new.git'
+git branch: 'ho', changelog: false, credentialsId: 'git', poll: false, url: 'https://github.com/narendrakumar998931/new.git'
 }
 }
 stage{
@@ -28,7 +28,7 @@ sh 'mvn clean install package'
 }
 stage{
 steps(create artifact){
-archiveArtifacts '**/.war'
+archiveArtifacts '**/*.war'
 }
 }
 }
