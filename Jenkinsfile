@@ -11,23 +11,24 @@ timestamps()
 stages{
 stage('show the dir'){
 steps{
-sh'''
+sh '''
 echo "this is pipe line project"
-echo "PATH=$PATH"
+echo "PATH=${PATH}"
+'''
 }
 }
-stage{
-steps('checkout code from the git'){
+stage('checkout code from the git'){
+steps{
 git branch: 'ho', changelog: false, credentialsId: 'git', poll: false, url: 'https://github.com/narendrakumar998931/new.git'
 }
 }
-stage{
-steps('project build through maven'){
+stage('project build through maven'){
+steps{
 sh 'mvn clean install package'
 }
 }
-stage{
-steps(create artifact){
+stage(create artifact){
+steps{
 archiveArtifacts '**/*.war'
 }
 }
