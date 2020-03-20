@@ -27,7 +27,7 @@ steps{
 sh 'mvn clean install package'
 }
 }
-stage(create artifact){
+stage('create artifact'){
 steps{
 archiveArtifacts '**/*.war'
 }
