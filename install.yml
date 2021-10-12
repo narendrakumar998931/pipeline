@@ -1,0 +1,17 @@
+---
+- name: this is nginx
+  hosts: all
+  become: true
+  tasks:
+  - name: nginx installation
+    package:
+      name: nginx
+      state: latest
+  - name: copy the index file
+    copy:
+      src: index.html
+      dest: /var/www/html/
+  - name: service nginx
+    service:
+      name: nginx
+      state: started
